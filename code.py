@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 
 # Created by: Ben Lapuhapo
-# Created on: Jan 16 2020
+# Created on: Jan 2020
 # This file is the "Space Aliens" game
 #   for CircuitPython
 
 import ugame
 import stage
 import board
-import neopixel
 import time
 import random
 
@@ -93,9 +92,6 @@ def our_splash_scene():
 
     # an image bank for CircuitPython
     image_bank_2 = stage.Bank.from_bmp16("splash3.bmp")
-
-
-
 
     # sets the background to image 0 in the bank
     background = stage.Grid(image_bank_2, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
@@ -372,6 +368,7 @@ def game_scene():
             if aliens[alien_number].x < 0: # meaning it is off the screen, so available to move on the screen
                 aliens[alien_number].move(random.randint(0 + constants.SPRITE_SIZE, constants.SCREEN_X - constants.SPRITE_SIZE), constants.OFF_TOP_SCREEN)
                 break
+
     # buttons that you want to keep state information on
     a_button = constants.button_state["button_up"]
     b_button = constants.button_state["button_up"]
@@ -380,7 +377,6 @@ def game_scene():
 
 
     # an image bank for CircuitPython
-    image_bank_1 = stage.Bank.from_bmp16("sprite.bmp")
     image_bank_2 = stage.Bank.from_bmp16("sprite.bmp")
     # a list of sprites that will be updated every frame
     background  = stage.Grid(image_bank_2, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
@@ -417,49 +413,49 @@ def game_scene():
     background.tile(8, 2, 1)
     background.tile(9, 2, 2)
 
-    background.tile(0, 3, 13)
-    background.tile(1, 3, 13)
-    background.tile(2, 3, 13)
-    background.tile(3, 3, 13)
-    background.tile(4, 3, 13)
-    background.tile(5, 3, 13)
-    background.tile(6, 3, 13)
-    background.tile(7, 3, 13)
-    background.tile(8, 3, 13)
-    background.tile(9, 3, 13)
+    background.tile(0, 3, 1)
+    background.tile(1, 3, 2)
+    background.tile(2, 3, 1)
+    background.tile(3, 3, 2)
+    background.tile(4, 3, 1)
+    background.tile(5, 3, 2)
+    background.tile(6, 3, 1)
+    background.tile(7, 3, 2)
+    background.tile(8, 3, 1)
+    background.tile(9, 3, 2)
 
-    background.tile(0, 4, 13)
-    background.tile(1, 4, 13)
-    background.tile(2, 4, 13)
-    background.tile(3, 4, 13)
-    background.tile(4, 4, 13)
-    background.tile(5, 4, 13)
-    background.tile(6, 4, 13)
-    background.tile(7, 4, 13)
-    background.tile(8, 4, 13)
-    background.tile(9, 4, 13)
+    background.tile(0, 4, 1)
+    background.tile(1, 4, 2)
+    background.tile(2, 4, 1)
+    background.tile(3, 4, 2)
+    background.tile(4, 4, 1)
+    background.tile(5, 4, 2)
+    background.tile(6, 4, 1)
+    background.tile(7, 4, 2)
+    background.tile(8, 4, 1)
+    background.tile(9, 4, 2)
 
-    background.tile(0, 5, 13)
-    background.tile(1, 5, 13)
-    background.tile(2, 5, 13)
-    background.tile(3, 5, 13)
-    background.tile(4, 5, 13)
-    background.tile(5, 5, 13)
-    background.tile(6, 5, 13)
-    background.tile(7, 5, 13)
-    background.tile(8, 5, 13)
-    background.tile(9, 5, 13)
+    background.tile(0, 5, 15)
+    background.tile(1, 5, 15)
+    background.tile(2, 5, 15)
+    background.tile(3, 5, 15)
+    background.tile(4, 5, 15)
+    background.tile(5, 5, 15)
+    background.tile(6, 5, 15)
+    background.tile(7, 5, 15)
+    background.tile(8, 5, 15)
+    background.tile(9, 5, 15)
 
-    background.tile(0, 6, 10)
-    background.tile(1, 6, 11)
-    background.tile(2, 6, 10)
-    background.tile(3, 6, 11)
-    background.tile(4, 6, 10)
-    background.tile(5, 6, 11)
-    background.tile(6, 6, 10)
-    background.tile(7, 6, 11)
-    background.tile(8, 6, 10)
-    background.tile(9, 6, 11)
+    background.tile(0, 6, 12)
+    background.tile(1, 6, 12)
+    background.tile(2, 6, 12)
+    background.tile(3, 6, 12)
+    background.tile(4, 6, 12)
+    background.tile(5, 6, 12)
+    background.tile(6, 6, 12)
+    background.tile(7, 6, 12)
+    background.tile(8, 6, 12)
+    background.tile(9, 6, 12)
 
     background.tile(0, 7, 12)
     background.tile(1, 7, 12)
@@ -477,12 +473,12 @@ def game_scene():
     # create aliens
     aliens = []
     for alien_number in range(constants.TOTAL_NUMBER_OF_PLATFORMS):
-        a_single_alien = stage.Sprite(image_bank_1, 6, constants.OFF_SCREEN_X, constants.OFF_SCREEN_X)
+        a_single_alien = stage.Sprite(image_bank_2, 5, constants.OFF_SCREEN_X, constants.OFF_SCREEN_X)
         aliens.append(a_single_alien)
 
 
     # current number of aliens that should be moving down screen, start with just 1
-    alien_count = 1
+    alien_count = 4
     show_alien()
     # add text at top of screen for score
     score_text = stage.Text(width=29, height=14, font=None, palette=constants.SCORE_PALETTE, buffer=None)
@@ -491,10 +487,10 @@ def game_scene():
     score_text.move(1, 1)
     score_text.text("Score: {0}".format(score))
 
-    ship = stage.Sprite(image_bank_1, 3, int(constants.SCREEN_X / 2), constants.SCREEN_Y - constants.SPRITE_SIZE)
+
+    ship = stage.Sprite(image_bank_2, 3, int(constants.SCREEN_X / 2), constants.SCREEN_Y - constants.SPRITE_SIZE)
     sprites.append(ship) # insert at the top of sprite list
-
-
+    ship.move(constants.START_X, constants.START_Y)
 
     # create a stage for the background to show up on
     #   and set the frame rate to 60fps
@@ -514,6 +510,7 @@ def game_scene():
         if keys & ugame.K_X != 0:  # A button
             if a_button == constants.button_state["button_up"]:
                 a_button = constants.button_state["button_just_pressed"]
+
             elif a_button == constants.button_state["button_just_pressed"]:
                 a_button = constants.button_state["button_still_pressed"]
         else:
@@ -521,8 +518,6 @@ def game_scene():
                 a_button = constants.button_state["button_released"]
             else:
                 a_button = constants.button_state["button_up"]
-
-        # update game logic
 
         # if right D-Pad is pressed
         if keys & ugame.K_RIGHT != 0:
@@ -533,7 +528,8 @@ def game_scene():
             else:
                 ship.move(ship.x + constants.SHIP_SPEED, ship.y)
 
-        # if left D-Pad is pressed
+
+
         if keys & ugame.K_LEFT != 0:
             # if ship moves off left screen, move it back
             if ship.x < 0:
@@ -541,7 +537,6 @@ def game_scene():
             # else move ship left
             else:
                 ship.move(ship.x - constants.SHIP_SPEED, ship.y)
-
         # each frame move the aliens down the screen
         for alien_number in range(len(aliens)):
             if aliens[alien_number].x > 0: # meaning it is on the screen
@@ -549,6 +544,11 @@ def game_scene():
                 if aliens[alien_number].y > constants.SCREEN_Y:
                     aliens[alien_number].move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
                     show_alien() # make it randomly show up at top again
+        if keys & ugame.K_X:
+            ship.move(ship.x, ship.y - 1.5)
+        else:
+                ship.move(ship.x, ship.y + 2.5)
+                pass
 
 
         # each frame check if any of the aliens are touching the ship
@@ -557,16 +557,150 @@ def game_scene():
                 # https://circuitpython-stage.readthedocs.io/en/latest/#stage.collide
                 # and https://stackoverflow.com/questions/306316/determine-if-two-rectangles-overlap-each-other
                 if stage.collide(aliens[alien_number].x + 1, aliens[alien_number].y,
-                                 aliens[alien_number].x + 15, aliens[alien_number].y + 15,
+                                 aliens[alien_number].x + 10, aliens[alien_number].y + 10,
                                  ship.x, ship.y,
-                                 ship.x + 15, ship.y + 15):
-                    # Wait for 1 seconds
-                    time.sleep(4.0)
-                    game_over_scene(score)
+                                 ship.x + 10, ship.y + 10):
+                                 constants.SHIP_SPEED -1
 
         # redraw sprite list
         game.render_sprites(sprites + aliens)
         game.tick() # wait until refresh rate finishes
 
+def game_over_scene(final_score):
+    # this function is the game over scene
+    # an image bank for CircuitPython
+    image_bank_2 = stage.Bank.from_bmp16("sprite.bmp")
+
+    # sets the background to image 0 in the bank
+    background = stage.Grid(image_bank_2, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
+
+    background.tile(0, 0, 14)
+    background.tile(1, 0, 14)
+    background.tile(2, 0, 14)
+    background.tile(3, 0, 14)
+    background.tile(4, 0, 14)
+    background.tile(5, 0, 14)
+    background.tile(6, 0, 14)
+    background.tile(7, 0, 14)
+    background.tile(8, 0, 14)
+    background.tile(9, 0, 14)
+
+    background.tile(0, 1, 14)
+    background.tile(1, 1, 14)
+    background.tile(2, 1, 14)
+    background.tile(3, 1, 14)
+    background.tile(4, 1, 14)
+    background.tile(5, 1, 14)
+    background.tile(6, 1, 14)
+    background.tile(7, 1, 14)
+    background.tile(8, 1, 14)
+    background.tile(9, 1, 14)
+
+    background.tile(0, 2, 14)
+    background.tile(1, 2, 14)
+    background.tile(2, 2, 14)
+    background.tile(3, 2, 14)
+    background.tile(4, 2, 14)
+    background.tile(5, 2, 14)
+    background.tile(6, 2, 14)
+    background.tile(7, 2, 14)
+    background.tile(8, 2, 14)
+    background.tile(9, 2, 14)
+
+    background.tile(0, 3, 14)
+    background.tile(1, 3, 14)
+    background.tile(2, 3, 14)
+    background.tile(3, 3, 14)
+    background.tile(4, 3, 14)
+    background.tile(5, 3, 14)
+    background.tile(6, 3, 14)
+    background.tile(7, 3, 14)
+    background.tile(8, 3, 14)
+    background.tile(9, 3, 14)
+
+    background.tile(0, 4, 14)
+    background.tile(1, 4, 14)
+    background.tile(2, 4, 14)
+    background.tile(3, 4, 14)
+    background.tile(4, 4, 14)
+    background.tile(5, 4, 14)
+    background.tile(6, 4, 14)
+    background.tile(7, 4, 14)
+    background.tile(8, 4, 14)
+    background.tile(9, 4, 14)
+
+    background.tile(0, 5, 14)
+    background.tile(1, 5, 14)
+    background.tile(2, 5, 14)
+    background.tile(3, 5, 14)
+    background.tile(4, 5, 14)
+    background.tile(5, 5, 14)
+    background.tile(6, 5, 14)
+    background.tile(7, 5, 14)
+    background.tile(8, 5, 14)
+    background.tile(9, 5, 14)
+
+    background.tile(0, 6, 14)
+    background.tile(1, 6, 14)
+    background.tile(2, 6, 14)
+    background.tile(3, 6, 14)
+    background.tile(4, 6, 14)
+    background.tile(5, 6, 14)
+    background.tile(6, 6, 14)
+    background.tile(7, 6, 14)
+    background.tile(8, 6, 14)
+    background.tile(9, 6, 14)
+
+    background.tile(0, 7, 14)
+    background.tile(1, 7, 14)
+    background.tile(2, 7, 14)
+    background.tile(3, 7, 14)
+    background.tile(4, 7, 14)
+    background.tile(5, 7, 14)
+    background.tile(6, 7, 14)
+    background.tile(7, 7, 14)
+    background.tile(8, 7, 14)
+    background.tile(9, 7, 14)
+
+    text = []
+
+    text0 = stage.Text(width=29, height=14, font=None, palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+    text0.move(22, 20)
+    text0.text("Final Score: {:0>2d}".format(final_score))
+    text.append(text0)
+
+    text1 = stage.Text(width=29, height=14, font=None, palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+    text1.move(43, 60)
+    text1.text("GAME OVER")
+    text.append(text1)
+
+    text2 = stage.Text(width=29, height=14, font=None, palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+    text2.move(32, 105)
+    text2.text("PRESS SELECT")
+    text.append(text2)
+
+    # create a stage for the background to show up on
+    #   and set the frame rate to 60fps
+    game = stage.Stage(ugame.display, 60)
+    # set the layers, items show up in order
+    game.layers = text + [background]
+    # render the background and inital location of sprite list
+    # most likely you will only render background once per scene
+    game.render_block()
+
+    # repeat forever, game loop
+    while True:
+        # get user input
+
+        # update game logic
+        keys = ugame.buttons.get_pressed()
+        #print(keys)
+
+        if keys & ugame.K_SELECT != 0:  # SELECT button
+            keys = 0
+            menu_scene()
+            #break
+
+        # redraw sprite list
 if __name__ == "__main__":
     mt_splash_scene()
